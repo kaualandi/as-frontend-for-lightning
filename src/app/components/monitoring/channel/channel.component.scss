@@ -1,0 +1,61 @@
+@import "src/styles/media";
+
+.card-measure {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: var(--monitoring-channel);
+  border-radius: 5px;
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 3px;
+
+  .name,
+  .measure {
+    margin: 0;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  .name {
+    position: relative;
+    width: 100%;
+    margin: 0 auto 0 5px;
+    text-align: left;
+  }
+
+  .measure {
+    margin: auto;
+    text-align: center;
+  }
+
+  .absolute {
+    position: absolute;
+    bottom: 5px;
+    left: 3px;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+
+    h5 {
+      margin: 0;
+      font-size: 9px;
+      line-height: 1.5;
+      text-align: center;
+    }
+  }
+
+  @include media(">1500px") {
+    padding: 8px 2px;
+
+    .name {
+      font-size: 0.8vw !important;
+    }
+    .measure {
+      font-size: 1.7vw !important;
+    }
+  }
+}

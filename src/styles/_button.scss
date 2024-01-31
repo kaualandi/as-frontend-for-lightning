@@ -1,0 +1,62 @@
+.mat-button-base {
+  &.mat-button {
+    &.primary {
+      background-color: var(--text-color);
+      color: var(--primary-bg);
+      border-radius: 5px;
+    }
+
+    &.mat-button-disabled,
+    &:disabled {
+      background-color: var(--text-color-50);
+      color: var(--primary-bg) !important;
+      opacity: 0.5;
+    }
+  }
+}
+
+.back-title {
+  display: flex;
+  align-items: center;
+  span {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    .back-button {
+      flex: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--text-color);
+      font-weight: 700;
+      font-size: 1rem;
+      background-color: #292929;
+
+      i {
+        color: var(--text-color);
+        font-size: 1rem;
+      }
+    }
+    .add-button,
+    .system-button {
+      flex: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--text-color);
+      font-weight: 700;
+      font-size: 1rem;
+
+      &.add-button {
+        i {
+          font-size: 1.7rem;
+        }
+      }
+    }
+
+    .title-page {
+      padding: 1rem 0;
+      margin-bottom: 0;
+    }
+  }
+}

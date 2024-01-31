@@ -1,0 +1,37 @@
+<div class="card-measure" #sizeChannel>
+  <h3 class="name f-10" [style.color]="channel.color">{{ channel.title }}</h3>
+
+  <h1
+    class="measure f-18"
+    *ngIf="channel.title !== 'PI' && channel.status !== 'Offline'"
+    [style.color]="channel.color"
+  >
+    {{ channel.value || "-" }}
+  </h1>
+  <h1
+    class="measure f-18"
+    *ngIf="channel.status === 'Offline'"
+    [style.color]="channel.color"
+  >
+    ?
+  </h1>
+
+  <h1
+    class="measure f-18"
+    [style.color]="channel.color"
+    *ngIf="channel.title === 'PI'"
+  >
+    {{ channel.channel?.params[0]?.value || "-" }}/
+    {{ channel.channel?.params[1]?.value || "-" }}
+    ({{ channel.channel?.params[2]?.value || "-" }})
+  </h1>
+
+  <div class="absolute">
+    <h5 class="min" [style.color]="channel.color">
+      {{ channel.status === "Offline" ? "?" : 10 }}
+    </h5>
+    <h5 class="max" [style.color]="channel.color">
+      {{ channel.status === "Offline" ? "?" : 120 }}
+    </h5>
+  </div>
+</div>

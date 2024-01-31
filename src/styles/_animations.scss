@@ -1,0 +1,127 @@
+.fa-spin {
+  --fa-animation-duration: 0.5s;
+}
+
+@mixin move-left-to-right() {
+  animation: move-left-to-right 1s var(--time-c-b);
+
+  @keyframes move-left-to-right {
+    0% {
+      transform: translateX(-100%);
+    }
+  }
+}
+
+@mixin shake() {
+  animation: shake 0.2s var(--time-c-b);
+
+  @keyframes shake {
+    0% {
+      transform: translateX(0);
+    }
+
+    25% {
+      transform: translateX(5px);
+    }
+
+    50% {
+      transform: translateX(-5px);
+    }
+
+    75% {
+      transform: translateX(5px);
+    }
+
+    100% {
+      transform: translateX(0);
+    }
+  }
+}
+
+//? Animation of alarms
+.row-alarm {
+  font-weight: 600;
+  border: 2px solid transparent;
+  &.blue {
+    background-color: var(--cyan-color);
+    border-radius: 5px;
+    padding: 5px;
+
+    &.animation {
+      animation: alarm-monitor-blue 1.5s infinite alternate;
+      @keyframes alarm-monitor-blue {
+        0% {
+          transition: var(--ts);
+        }
+        25% {
+          transition: var(--ts);
+          // border: 2px solid #0dd8dc;
+          box-shadow: 0px 0px 20px 0px var(--cyan-color);
+        }
+        75% {
+          transition: var(--ts);
+          box-shadow: 0px 0px 20px 0px var(--cyan-color);
+          // border: 2px solid #0dd8dc;
+        }
+        100% {
+          box-shadow: 0px 0px 20px 0px transparent;
+        }
+      }
+    }
+  }
+  &.yellow {
+    background-color: var(--orange-color);
+    border-radius: 5px;
+    padding: 5px;
+
+    &.animation {
+      animation: alarm-monitor-yellow 1.5s 5 alternate;
+      @keyframes alarm-monitor-yellow {
+        0% {
+          transition: var(--ts);
+        }
+        25% {
+          transition: var(--ts);
+          // border: 2px solid #0dd8dc;
+          box-shadow: 0px 0px 20px 0px var(--orange-color);
+        }
+        75% {
+          transition: var(--ts);
+          box-shadow: 0px 0px 20px 0px var(--orange-color);
+          // border: 2px solid #0dd8dc;
+        }
+        100% {
+          box-shadow: 0px 0px 20px 0px transparent;
+        }
+      }
+    }
+  }
+
+  &.red {
+    background-color: var(--red-color);
+    border-radius: 5px;
+    padding: 5px;
+
+    &.animation {
+      animation: alarm-monitor-red 1.5s 5 alternate;
+      @keyframes alarm-monitor-red {
+        0% {
+          transition: var(--ts);
+        }
+        25% {
+          transition: var(--ts);
+          // border: 2px solid #0dd8dc;
+          box-shadow: 0px 0px 20px 0px var(--red-color);
+        }
+        75% {
+          transition: var(--ts);
+          box-shadow: 0px 0px 20px 0px var(--red-color);
+          // border: 2px solid #0dd8dc;
+        }
+        100% {
+          box-shadow: 0px 0px 20px 0px transparent;
+        }
+      }
+    }
+  }
+}

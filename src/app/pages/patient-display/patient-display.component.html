@@ -1,0 +1,575 @@
+<section *ngIf="!loading" id="patients-page" class="list-page">
+  <div class="back-title">
+    <span>
+      <button
+        title="back"
+        (click)="back()"
+        class="back-button adjust_backButton"
+        mat-icon-button
+      >
+        <i icon="angle_left"></i>
+      </button>
+      <h1 class="title-page">{{ "patient_display.title" | translate }}</h1>
+    </span>
+  </div>
+
+  <div class="bordering" *ngIf="!loading">
+    <h2 class="title-page">{{ "patient_display.subtitle" | translate }}</h2>
+    <form [formGroup]="patientData_form">
+      <div class="inputs-container">
+        <div class="card-input">
+          <label mat-label>{{ "patient_display.forms.id" | translate }}</label>
+          <input
+            class="id"
+            type="text"
+            matInput
+            placeholder="# ID"
+            formControlName="id"
+          />
+        </div>
+
+        <div class="card-input">
+          <label mat-label>
+            {{ "patient_display.forms.patient" | translate }}
+          </label>
+          <input
+            class="patient"
+            type="text"
+            matInput
+            placeholder="Paciente"
+            formControlName="name"
+          />
+        </div>
+
+        <div class="card-input">
+          <label mat-label>
+            {{ "patient_display.forms.birth_date" | translate }}
+          </label>
+          <input
+            class="birth"
+            type="text"
+            matInput
+            placeholder="Nascimento"
+            formControlName="birth_date"
+          />
+        </div>
+
+        <div class="card-input">
+          <label mat-label>
+            {{ "patient_display.forms.age" | translate }}
+          </label>
+          <input
+            class="age"
+            type="text"
+            matInput
+            placeholder="Idade"
+            formControlName="age"
+          />
+        </div>
+
+        <div class="card-input">
+          <label mat-label>
+            {{ "patient_display.forms.blood" | translate }}
+          </label>
+          <input
+            class="blood"
+            type="text"
+            matInput
+            placeholder="Sangue"
+            formControlName="blood_type"
+          />
+        </div>
+
+        <div class="card-input">
+          <label mat-label>
+            {{ "patient_display.forms.gender" | translate }}
+          </label>
+          <input
+            class="gender"
+            type="text"
+            matInput
+            placeholder="Sexo"
+            formControlName="gender"
+          />
+        </div>
+      </div>
+    </form>
+
+    <form [formGroup]="patientData_form">
+      <div class="inputs-container">
+        <div class="card-input">
+          <label mat-label>
+            {{ "patient_display.forms.bed" | translate }}
+          </label>
+          <input
+            class="bed"
+            type="text"
+            matInput
+            placeholder="# Leito"
+            formControlName="bed"
+          />
+        </div>
+
+        <div class="card-input">
+          <label mat-label>
+            {{ "patient_display.forms.doctor" | translate }}
+          </label>
+          <input
+            class="doctor"
+            type="text"
+            matInput
+            placeholder="Médico"
+            formControlName="doctor_name"
+          />
+        </div>
+
+        <div class="card-input">
+          <label mat-label>
+            {{ "patient_display.forms.admission_date" | translate }}
+          </label>
+          <input
+            class="admissionDate"
+            type="text"
+            matInput
+            placeholder="Admissão"
+            formControlName="admission_date"
+          />
+        </div>
+
+        <div class="card-input">
+          <label mat-label>
+            {{ "patient_display.forms.type" | translate }}
+          </label>
+          <input
+            class="type"
+            type="text"
+            matInput
+            placeholder="Tipo"
+            formControlName="type"
+          />
+        </div>
+
+        <div class="card-input">
+          <label mat-label>
+            {{ "patient_display.forms.height" | translate }}
+          </label>
+          <input
+            class="patientHeight"
+            type="text"
+            matInput
+            placeholder="Altura"
+            formControlName="height"
+          />
+        </div>
+
+        <div class="card-input">
+          <label mat-label>
+            {{ "patient_display.forms.weight" | translate }}
+          </label>
+          <input
+            class="patientWeight"
+            type="text"
+            matInput
+            placeholder="Peso"
+            formControlName="weight"
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <mat-accordion *ngIf="!loading">
+    <mat-expansion-panel
+      class="expansion_panel"
+      [disabled]="!patient_filter.bed"
+      [matTooltip]="
+        !patient_filter ? ('tooltip.monitoring_patient' | translate) : ''
+      "
+      [expanded]="true"
+      [disabled]="true"
+    >
+      <mat-expansion-panel-header>
+        <div class="expansion-header_content">
+          <mat-panel-title>
+            <h4
+              *ngIf="patient_filter"
+              class="f-14 break-line navigate"
+              [matTooltip]="
+                patient_filter.bed
+                  ? ('tooltip.monitoring_patient' | translate) +
+                    patient_filter.bed.name
+                  : ''
+              "
+              matTooltipPosition="above"
+              (click)="onClickNavigate(patient_filter)"
+            >
+              <a class="nonAdmition" *ngIf="!patient_filter.bed">
+                {{ "patient_display.montioring_patient" | translate }}
+              </a>
+
+              <a *ngIf="patient_filter.bed" class="hover-button">
+                {{ patient_filter.bed.department }}
+                &bull; #
+                {{ patient_filter.bed.name }}
+              </a>
+            </h4>
+
+            <div
+              class="tab-alarms"
+              [class.expand-fields]="!is_list_visible_beds"
+              *ngIf="!loading"
+            >
+              <mat-tab-group animationDuration="2000ms">
+                <mat-tab *ngFor="let tabs of dataAlarmBackup; let i = index">
+                  <ng-template mat-tab-label>
+                    <span class="mat-tab-label">
+                      {{ "patient_display.alarm" | translate }} {{ i + 1 }}/{{
+                        dataAlarmBackup.length
+                      }}
+                    </span>
+                  </ng-template>
+                </mat-tab>
+              </mat-tab-group>
+            </div>
+
+            <i
+              [class.icon_click]="!patient_filter.bed"
+              icon="menu"
+              (click)="is_list_visible_beds = !is_list_visible_beds"
+              [matTooltip]="
+                !patient_filter ? ('tooltip.expand' | translate) : ''
+              "
+            ></i>
+          </mat-panel-title>
+        </div>
+
+        <mat-panel-description> </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div class="list-patients">
+        <div class="patient-card" *ngIf="patient_filter">
+          <div
+            class="card-alarms-size"
+            [class.expand-fields]="is_list_visible_beds"
+          >
+            <app-card-monitor
+              class="card-monitoring"
+              *ngFor="let bed of monitorings"
+              [bed]="bed"
+              [ngClass]="{ alarm: bed.equipment[0].status === 'ALARMANDO' }"
+              (eventChild)="eventComponent($event)"
+              routerLink="/monitoring/detail/{{ bed.id }}"
+            ></app-card-monitor>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="table-container new-table"
+        [class.expand-fields]="is_list_visible_beds"
+      >
+        <table mat-table matSort [dataSource]="dataAlarmSource">
+          <ng-container matColumnDef="alarm">
+            <th mat-header-cell *matHeaderCellDef></th>
+
+            <td class="column-alarm" mat-cell *matCellDef="let row">
+              <span class="row-alarm" [class]="handleAlarmClass(row.priority)">
+                {{ row.name }}
+              </span>
+            </td>
+          </ng-container>
+
+          <tr
+            style="display: none"
+            mat-header-row
+            *matHeaderRowDef="displayedAlarmColumns"
+          ></tr>
+
+          <tr mat-row *matRowDef="let row; columns: displayedAlarmColumns"></tr>
+
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="1">
+              {{ "patient_display.alarm_msg" | translate }}
+            </td>
+          </tr>
+        </table>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <div>
+    <form [formGroup]="search_form" (ngSubmit)="filterListener()">
+      <div class="inputs-container" style="margin-top: 0px">
+        <div class="card-input">
+          <div class="input-icon">
+            <input
+              type="text"
+              [placeholder]="
+                'patient_display.placeholders_forms.department' | translate
+              "
+              aria-label="Number"
+              matInput
+              class="department"
+              formControlName="department"
+              [matAutocomplete]="auto"
+            />
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+              <mat-option
+                *ngFor="
+                  let filteredDepartmentOption of filteredDepartmentOptions
+                    | async
+                "
+                [value]="filteredDepartmentOption"
+              >
+                {{ filteredDepartmentOption.name }}
+              </mat-option>
+            </mat-autocomplete>
+            <button aria-label="Pesquisar" type="submit" mat-icon-button>
+              <i mat-icon icon="search"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-input">
+          <div class="input-icon">
+            <input
+              type="text"
+              [placeholder]="
+                'patient_display.placeholders_forms.bed' | translate
+              "
+              aria-label="Number"
+              matInput
+              class="bed"
+              formControlName="bed"
+            />
+
+            <button aria-label="Pesquisar" type="submit" mat-icon-button>
+              <i mat-icon icon="search"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-input">
+          <div class="input-icon">
+            <input
+              title="alarm"
+              class="alarm"
+              type="text"
+              matInput
+              [placeholder]="
+                'patient_display.placeholders_forms.alarm' | translate
+              "
+              formControlName="alarm"
+            />
+            <button
+              mat-button
+              aria-label="Pesquisar"
+              type="submit"
+              mat-icon-button
+            >
+              <i mat-icon icon="search"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-input">
+          <div class="input-icon">
+            <input
+              title="priority"
+              class="priority"
+              type="text"
+              matInput
+              [placeholder]="
+                'patient_display.placeholders_forms.priority' | translate
+              "
+              formControlName="priority"
+            />
+            <button
+              mat-button
+              aria-label="Pesquisar"
+              type="submit"
+              mat-icon-button
+            >
+              <i mat-icon icon="search"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-input">
+          <div class="input-icon">
+            <input
+              title="type"
+              class="type"
+              type="text"
+              matInput
+              [placeholder]="
+                'patient_display.placeholders_forms.type' | translate
+              "
+              formControlName="type"
+            />
+            <button
+              mat-button
+              aria-label="Pesquisar"
+              type="submit"
+              mat-icon-button
+            >
+              <i mat-icon icon="search"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-input">
+          <div class="input-icon">
+            <input
+              title="occurrence_date"
+              class="occurrence-date"
+              matInput
+              name="date"
+              id="occurrence_date"
+              readonly
+              [matDatepicker]="picker"
+              type="text"
+              [placeholder]="
+                'patient_display.placeholders_forms.occurrence_date' | translate
+              "
+              (dateChange)="filterListener()"
+              formControlName="occurrence_date"
+            />
+
+            <mat-datepicker-toggle [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="table-container" *ngIf="!loading">
+    <table mat-table matSort [dataSource]="dataSource">
+      <!-- Department Column -->
+      <ng-container matColumnDef="department">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "patient_display.placeholders_table.department" | translate }}
+        </th>
+        <td class="column-department" mat-cell *matCellDef="let row">
+          {{ row.department || "-" }}
+        </td>
+      </ng-container>
+
+      <!-- Bed Column -->
+      <ng-container matColumnDef="bed">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "patient_display.placeholders_table.bed" | translate }}
+        </th>
+        <td class="column-bed" mat-cell *matCellDef="let row">
+          <a
+            class="hover-button"
+            [matTooltip]="'tooltip.bed_display' | translate"
+            matTooltipPosition="above"
+            routerLink="/monitoring/detail/{{ row.bed }}"
+          >
+            {{ row.bed ? row.bed.name : "-" }}
+          </a>
+        </td>
+      </ng-container>
+
+      <!-- Patient Column -->
+      <ng-container matColumnDef="patient">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "patient_display.placeholders_table.patient" | translate }}
+        </th>
+        <td class="column-patient" mat-cell *matCellDef="let row">
+          <a
+            class="hover-button"
+            [matTooltip]="'tooltip.patient_display' | translate"
+            matTooltipPosition="above"
+            routerLink="/patient-display/{{ row.patient.id }}"
+          >
+            {{ row.patient ? row.patient.name : "-" }}
+          </a>
+        </td>
+      </ng-container>
+
+      <!-- Alarm Column -->
+      <ng-container matColumnDef="alarm">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "patient_display.placeholders_table.alarm" | translate }}
+        </th>
+        <td class="column-alarm" mat-cell *matCellDef="let row">
+          <span class="row-alarm" *ngIf="!row.alarm"> </span>
+          <span
+            class="row-alarm"
+            *ngIf="row.name"
+            [class]="handleAlarmClass(row.priority)"
+          >
+            {{ row.name || "-/-" }}
+          </span>
+        </td>
+      </ng-container>
+
+      <!-- Priority Column -->
+      <ng-container matColumnDef="priority">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "patient_display.placeholders_table.priority" | translate }}
+        </th>
+
+        <td class="column-priority" mat-cell *matCellDef="let row">
+          <span> {{ row.priority | priorityAlarms }}</span>
+        </td>
+      </ng-container>
+
+      <!-- Type Column -->
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "patient_display.placeholders_table.type" | translate }}
+        </th>
+
+        <td class="column-type" mat-cell *matCellDef="let row">
+          <span>{{ row.type }}</span>
+        </td>
+      </ng-container>
+
+      <!-- Occurence-Date Column -->
+      <ng-container matColumnDef="occurrence_date">
+        <th
+          class="header-occurrence-date"
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header
+        >
+          {{ "patient_display.placeholders_table.occurrence_date" | translate }}
+        </th>
+
+        <td class="column-occurrence-date" mat-cell *matCellDef="let row">
+          <span>{{ (row.created_at | fDate : "date") || "-" }}</span>
+        </td>
+      </ng-container>
+
+      <!-- End-Occurence Column -->
+      <ng-container matColumnDef="occurrence_end">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ "patient_display.placeholders_table.end_occurrence" | translate }}
+        </th>
+
+        <td class="column-occurrence-end" mat-cell *matCellDef="let row">
+          <span>
+            {{ (row.occurrence_end | fDate : "date") || "-" }}
+          </span>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="8">
+          {{ "patient_display.placeholders_table.historic" | translate }}
+        </td>
+      </tr>
+    </table>
+    <pagination
+      (pageChange)="backOrNextPage($event)"
+      [back]="prev"
+      [next]="next"
+      [current]="current_page"
+      [total]="total_page"
+    ></pagination>
+  </div>
+</section>
+<app-table-page-loading *ngIf="loading"></app-table-page-loading>

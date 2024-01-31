@@ -1,0 +1,79 @@
+<section #cardSize class="{{ bed.equipment[0].status.toUpperCase() }}" [ngClass]="{ alarm: alarm?.param?.label }"
+  (click)="openMonitoring()">
+  <header>
+    <div class="name-patient-status" [ngClass]="'w_' + isSetting.monitor_exibition">
+      <!-- <span [ngClass]="bed.equipment[0].status"></span> -->
+      <span [ngClass]="status.toUpperCase()"></span>
+
+      <h4 class="f-16 break-line">
+        {{
+        bed.equipment[0].department ||
+        ("monitoring.list_monitoring.card_monitor.anonymous" | translate)
+        }}
+        -
+        {{
+        bed.id ||
+        ("monitoring.list_monitoring.card_monitor.anonymous" | translate)
+        }}
+      </h4>
+    </div>
+
+    <div class="icons">
+      <i *ngIf="bed.typeView && viewInfoCard" class="f-18" icon="grid" matTooltipPosition="above"
+        [matTooltip]="'Canais'" (click)="changeView($event)"></i>
+      <i *ngIf="!bed.typeView && viewInfoCard" class="f-18" matTooltipPosition="above" icon="curves"
+        [matTooltip]="'Curvas'" (click)="changeView($event)"></i>
+    </div>
+
+    <button class="option" title="option" mat-button [matMenuTriggerFor]="menu" (click)="stopProp($event)">
+      <i icon="option"></i>
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <div class="icons coll">
+        <i class="f-18" matTooltipPosition="above" icon="timer" matTooltip="Última atualização: {{ (bed.equipment[0].last_read_at || '') | fDate: 'datetime' }}"></i>
+        <i class="f-18" matTooltipPosition="above" *ngIf="bed.patient" icon="info" (click)="openPatient($event)"
+          [matTooltip]="info"></i>
+        <i class="f-18" *ngIf="bed.equipment" icon="monitor" matTooltipPosition="above" (click)="openEquipment($event)"
+          [matTooltip]="monitor"></i>
+      </div>
+    </mat-menu>
+  </header>
+
+  <div class="alarms" *ngIf="alarm?.param?.label">
+    {{ alarm?.param?.label }}
+  </div>
+
+  <div class="center" *ngIf="
+      bed.params.length > 0 &&
+      bed.equipment[0].status?.toUpperCase() !== 'ONLINE' &&
+      bed.equipment[0].status?.toUpperCase() !== 'ALARMANDO'
+    ">
+    <h1>{{ bed.equipment[0].status || '' }}</h1>
+  </div>
+
+  <div class="center" *ngIf="bed.params.length <= 0">
+    <h2>
+      Sem parametros <br />
+      neste monitor.
+    </h2>
+  </div>
+
+  <div class="w_100" *ngIf="
+      (bed.params.length > 0 &&
+        bed.equipment[0].status?.toUpperCase() === 'ONLINE') ||
+      bed.equipment[0].status?.toUpperCase() === 'ALARMANDO'
+    ">
+    <app-list-channels *ngIf="!bed.typeView && bed.params.length > 0" [status]="bed.equipment[0].status"
+      [channels]="bed.params" [limit]="numChannel" [isAll]="false"
+      (eventAlarm)="triggerAlarm($event)"></app-list-channels>
+
+    <app-card-mode-curves *ngIf="bed.typeView" [bed]="bed" [hertz]="breakpoints[index_bp].hertz"
+      [secs]="breakpoints[index_bp].secs" [channels]="bed.params" [status]="bed.equipment[0].status" [limit]="2"
+      (eventAlarm)="triggerAlarm($event)"></app-card-mode-curves>
+  </div>
+</section>
+
+<!-- <audio controls loop>
+  <source src="../../../../assets/alarm.mp3" type="audio/mpeg" />
+</audio> -->

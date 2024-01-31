@@ -1,0 +1,61 @@
+$base-font-size: 19;
+$min-font-size: 10;
+$max-font-size: 52;
+
+@for $i from $min-font-size through $max-font-size {
+  $class-name: ".fd-#{$i}";
+
+  #{$class-name} {
+    font-size: calc($i / $base-font-size * 1rem);
+  }
+}
+
+.f-gray {
+  color: var(--text-color-50);
+}
+
+.f-white {
+  color: var(--text-color);
+}
+
+.mat-typography {
+  h1 {
+    @extend .fd-24;
+  }
+  h2 {
+    @extend .fd-18;
+  }
+  h3 {
+    @extend .fd-16;
+  }
+  h4 {
+    @extend .fd-14;
+  }
+  h5 {
+    @extend .fd-12;
+  }
+  h6 {
+    @extend .fd-10;
+  }
+  p {
+    @extend .fd-14;
+  }
+  a {
+    @extend .fd-14;
+  }
+
+  label {
+    @extend .fd-14;
+  }
+  .mat-button {
+    @extend .fd-14;
+  }
+}
+
+@for $i from $min-font-size through $max-font-size {
+  $class-name: ".f-#{$i}";
+
+  #{$class-name} {
+    font-size: calc($i / $base-font-size * 1rem) !important;
+  }
+}

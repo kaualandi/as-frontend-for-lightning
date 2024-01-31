@@ -1,0 +1,51 @@
+:root {
+  font-size: calc(16px + 0.3125vw);
+  --ts: all 0.3s ease-in-out;
+  --br: 5px;
+  --time-c-b: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  --text-color: #ffffff;
+  --text-color-50: #ffffff80;
+  --main-color: #302b2b;
+  --linear-bg: linear-gradient(180deg, #222222 0%, #0d0d0d 100%);
+  --primary-bg: #121212;
+  --secondary-bg: #121212;
+
+  // ? Monitoring
+  --card-monitor: #464749;
+  --monitoring-channel: #181818;
+
+  // ? Dialog variables
+  --button-dialog: #404040;
+  --button-green: #92fe72;
+
+  // ? Skeleton variables
+  --skeleton-bg-dark: #262626;
+  --skeleton-bg: #333333;
+
+  // ? Table variables
+  --table-bg: #262626;
+  --table-row-hover: #404040;
+
+  // ? Alarm variablese
+  --orange-color: #fc0;
+  --green-color: #62fe34;
+  --pink-color: #ff8080;
+  --purple-color: #ca1fcd;
+  --red-color: #ff0000;
+  --gray-color: #cfcfcf;
+  --white-color: #fff;
+  --cyan-color: #00deff;
+  --blue-color: #0057ff;
+
+  // ? Avatar variables
+  --avatar-dark-color: #000000;
+  --avatar-light-color: #ffffff;
+  --avatar-br: 50%;
+  --avatar-ratio: 1/1;
+
+  // ? Navbar variables
+  --navbar-height: 85px;
+  --navbar-background: #000000;
+  --sidebar-background: #080808;
+}

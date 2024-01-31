@@ -1,0 +1,86 @@
+<section
+  class="skeleton categories"
+  [ngClass]="'qtd_' + isSetting.monitor_exibition"
+  cdkDropListGroup
+  *ngIf="monitorings.length > 0 && monitorings[index].length > 0 && editOrder"
+>
+  <ng-container *ngFor="let bed of monitorings[index]; let i = index">
+    <div
+      class="categories-item"
+      cdkDropList
+      cdkDropListOrientation="horizontal"
+      [cdkDropListData]="{ item: bed, index: i }"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div
+        class="card"
+        [ngClass]="{
+          alarm:
+            bed.equipment.length > 0 && bed.equipment[0].status === 'ALARMANDO'
+        }"
+        cdkDrag
+        [cdkDragDisabled]="!editOrder"
+      >
+        <div class="placeholder" *cdkDragPlaceholder></div>
+        <app-card-monitor
+          class="card-monitor"
+          [bed]="bed"
+          (eventAlarm)="triggerAlarm($event, i)"
+        ></app-card-monitor>
+      </div>
+    </div>
+  </ng-container>
+
+  <div
+    class="card-monitor disabled"
+    *ngFor="let bed of [].constructor(monitor_exibition)"
+  >
+    <h1 class="text_disconnected">
+      {{ "monitoring.list_monitoring.card_monitor.disconnected" | translate }}
+    </h1>
+  </div>
+</section>
+
+<section
+  class="skeleton"
+  *ngIf="monitorings.length > 0 && monitorings[index].length > 0 && !editOrder"
+  [ngClass]="'qtd_' + isSetting.monitor_exibition"
+>
+  <app-card-monitor
+    class="card-monitor"
+    *ngFor="let bed of monitorings[index]"
+    [bed]="bed"
+    [ngClass]="{
+      alarm: bed.equipment.length > 0 && bed.equipment[0].status === 'ALARMANDO'
+    }"
+  ></app-card-monitor>
+  <div
+    class="card-monitor disabled"
+    *ngFor="let bed of [].constructor(monitor_exibition)"
+  >
+    <h1 class="text_disconnected">
+      {{ "monitoring.list_monitoring.card_monitor.disconnected" | translate }}
+    </h1>
+  </div>
+</section>
+
+<section
+  class="skeleton"
+  [ngClass]="'qtd_' + isSetting.monitor_exibition"
+  *ngIf="monitorings.length > 0 && monitorings[index].length <= 0"
+>
+  <div
+    class="card-monitor s"
+    *ngFor="let bed of [].constructor(isSetting?.monitor_exibition || 0)"
+  ></div>
+</section>
+
+<pagination
+  class="card-absolute"
+  *ngIf="monitorings.length > 0  && monitorings[index].length > 0"
+  (pageChange)="backOrNextPage($event)"
+  [back]="prev"
+  [next]="next"
+  [current]="current_page"
+  [total]="total_page"
+></pagination>

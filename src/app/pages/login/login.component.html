@@ -1,0 +1,45 @@
+<main id="login">
+  <div class="content">
+    <header>
+      <img src="assets/images/as-logo.png" alt="Logo" />
+      <h1 class="f-16">{{ "login.title" | translate }}</h1>
+    </header>
+
+    <div class="form">
+      <form (ngSubmit)="loginSubmitHandler()" [formGroup]="login_form">
+        <div class="card-input">
+          <input type="text" id="email" [placeholder]="'login.placeholder_email' | translate" formControlName="email" />
+        </div>
+        <div class="card-input">
+          <span class="input-icon">
+            <input [type]="view_pass ? 'text' : 'password'" id="password"
+              [placeholder]="'login.placeholder_password' | translate" formControlName="password" />
+            <button type="button" mat-icon-button aria-label="Ver senha" (click)="view_pass = !view_pass">
+              <i icon="view_pass" *ngIf="!view_pass"></i>
+              <i icon="hide_pass" *ngIf="view_pass"></i>
+            </button>
+          </span>
+        </div>
+        <div class="card-input options">
+          <mat-checkbox formControlName="remember">
+            <span class="f-14">{{ "login.remember_me" | translate }}</span>
+          </mat-checkbox>
+          <span class="forgot-password">
+            <a class="f-12" (click)="onClickRecovery()">{{
+              "login.forgot_password" | translate
+              }}</a>
+          </span>
+        </div>
+        <div class="card-input button">
+          <button mat-button type="submit" class="primary" [disabled]="login_form.invalid || loading">
+            {{ "login.sign_in" | translate }}
+            <loading *ngIf="loading"></loading>
+          </button>
+        </div>
+        <div class="version">
+          {{version}}
+        </div>
+      </form>
+    </div>
+  </div>
+</main>

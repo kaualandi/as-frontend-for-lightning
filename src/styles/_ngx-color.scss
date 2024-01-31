@@ -1,0 +1,29 @@
+.opened {
+  background-color: var(--table-bg) !important;
+}
+
+.circle-border {
+  transition: var(--ts);
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.ng-tns-c184-5 {
+  color: white !important;
+  font-weight: 600 !important;
+  font-size: 0.8rem !important;
+}
+
+.g-input {
+  border: none !important;
+  input {
+    background-color: var(--table-row-hover) !important;
+
+    color: white !important;
+    font-weight: 600 !important;
+    font-size: 0.8rem !important;
+    &.ng-tns-c184-5 {
+    }
+  }
+}

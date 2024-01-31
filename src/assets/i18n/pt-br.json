@@ -1,0 +1,403 @@
+{
+  "none_found": "Nenhum encontrado.",
+  "no_information_found": "Nenhuma informação encontrada.",
+  "close": "Fechar",
+  "save": "Salvar",
+  "edit": "Editar",
+  "delet": "Deletar",
+  "add": "Adicionar",
+  "back": "Voltar",
+  "login": {
+    "title": "Bem-vindo!",
+    "placeholder_email": "E-mail",
+    "placeholder_password": "Senha",
+    "forgot_password": "Esqueceu sua senha?",
+    "remember_me": "Lembrar-me",
+    "sign_in": "Entrar"
+  },
+  "equipment": {
+    "title": "Equipamentos",
+    "all": "Todos",
+    "model": "Modelo",
+    "brand": "Marca",
+    "type": "Tipo",
+    "department": "Departamento",
+    "bed": "Leito",
+    "connection": "Conexão",
+    "select_department_first": "Selecione um departamento primeiro",
+    "no_beds": "Nenhum leito encontrado",
+    "detail": {
+      "titleNew": "Novo Equipamento",
+      "titleEdit": "Editar Equipamento",
+      "protocol": "Protocolo",
+      "department": "Departamento",
+      "is_active": "Ativo",
+      "verify": "Verificar Equipamento",
+      "keep_updated": "Manter atualizado",
+      "keep_patient_updated": "Manter paciente atualizado"
+    }
+  },
+  "pipes": {
+    "priorityAlarms": {
+      "LOW": "Baixo",
+      "MEDIUM": "Médio",
+      "HIGHT": "Alta"
+    },
+    "typeAlarms": {
+      "PARAMETER": "Parâmetro"
+    }
+  },
+  "monitoring": {
+    "bed_view": {
+      "bed_view": "Exibição de Leito",
+      "admission_date": "Data de Admissão",
+      "no_parameters_found": "Nenhum parâmetro encontrado."
+    },
+    "bed_configuration": {
+      "bed_configuration": "Configuração do Leito",
+      "equipment": "Equipamentos",
+      "model": "Modelo",
+      "brand": "Marca",
+      "type": "Tipo",
+      "department": "Departamento",
+      "bed": "Leito",
+      "connection": "Conexão",
+      "ip": "IP",
+      "mac": "Mac",
+      "exhibition": "Exibição",
+      "show": "Exibir",
+      "configure": "Configurar",
+      "dialog": {
+        "type_of_electrocardiogram": "Tipo de Eletrocardiograma (Mockado)"
+      }
+    },
+    "list_monitoring": {
+      "card_monitor": {
+        "anonymous": "Anônimo",
+        "offline": "OFFLINE",
+        "disconnected": "DESCONECTADO"
+      }
+    }
+  },
+  "bed": {
+    "title": "Leitos",
+    "placeholders_table": {
+      "department": "Departamento",
+      "bed": "Leito",
+      "patient": "Paciente",
+      "state": "Estado",
+      "alarm": "Alarme"
+    },
+    "detail": {
+      "titleNew": "Novo Leito",
+      "titleEdit": "Editar Leito",
+      "addBed": "Adicionar Leito",
+      "button": "Adicionar"
+    },
+    "bed_department_config": {
+      "title": "Configuração de Leito"
+    },
+    "expansion_panel": {
+      "buttons": {
+        "next": "Próximo",
+        "previous": "Anterior",
+        "end": "Final"
+      },
+      "expansion_header": {
+        "infirmary": "Enfermaria",
+        "birth_room": "Sala de Parto",
+        "nursery": "Berçário",
+        "emergency_room": "Pronto-Socorro",
+        "radiology": "Radiologia",
+        "pediatrics": "Pediatria"
+      }
+    }
+  },
+  "department": {
+    "detail": {
+      "titleNew": "Adicionar Departamento",
+      "titleEdit": "Editar Departamento",
+      "button": "Adicionar"
+    }
+  },
+  "alarm": {
+    "title": "Alarmes",
+    "placeholders_table": {
+      "department": "Departamento",
+      "bed": "Leito",
+      "patient": "Paciente",
+      "alarm": "Alarme",
+      "priority": "Prioridade",
+      "param": "Parâmetro",
+      "type": "Tipo",
+      "occurrence_date": "Data de Ocorrência"
+    },
+    "alarm_config": {
+      "title": "Configuração de Alarme"
+    }
+  },
+  "tooltip": {
+    "bed_display": "Ir para tela de exibição de leito",
+    "patient_display": "Ir para tela de exibição de paciente",
+    "bed_department_configuration": "Configurar leitos e departamentos",
+    "new_patient": "Novo Paciente",
+    "new_user": "Novo Usuário",
+    "monitoring_patient": "Exibir Leito ",
+    "expand": "Expandir "
+  },
+  "patients": {
+    "title": "Pacientes",
+    "forms": {
+      "patient": "Paciente",
+      "risk": "Risco",
+      "urgency": "Urgência",
+      "gender": "Sexo",
+      "type": "Tipo",
+      "blood": "Sangue",
+      "admission_date": "Data de Admissão",
+      "doctor": "Médico",
+      "department": "Departmento"
+    },
+    "column_title": {
+      "patient": "Paciente",
+      "risk": "Risco",
+      "urgency": "Urgência",
+      "type": "Tipo",
+      "gender": "Sexo",
+      "blood": "T. Sanguíneo",
+      "admission_date": "Data de Admissão",
+      "doctor": "Médico",
+      "department": "Departmento",
+      "bed": "Leito"
+    },
+    "table_content": {
+      "type": {
+        "ADULT": "Adulto",
+        "NEONATAL": "Neonatal",
+        "PEDIATRICS": "Pediatria"
+      },
+      "gender": {
+        "MASCULINO": "Masculino",
+        "FEMININO": "Feminino"
+      },
+      "risk": {
+        "low": "Baixo",
+        "medium": "Médio",
+        "high": "Alto"
+      },
+      "urgency": {
+        "low": "Baixo",
+        "medium": "Médio",
+        "high": "Alto"
+      }
+    }
+  },
+  "new_patients": {
+    "title_1": "Novo Paciente",
+    "title_2": "Editar dados: ",
+    "forms": {
+      "id": "Registro",
+      "name": "Nome",
+      "type": "Tipo",
+      "blood": "Sangue",
+      "admission_date": "Data de admissão",
+      "doctor": "Médico",
+      "department": "Departamento",
+      "gender": "Sexo",
+      "age": "Idade",
+      "height": "Altura (cm)",
+      "weight": "Peso (kg)",
+      "birth_date": "Data de nascimento",
+      "bed": "Leito",
+      "risk": "Risco",
+      "urgency": "Urgência"
+    },
+    "placeholders_table": {
+      "id": "Registro",
+      "name": "Nome",
+      "type": "Tipo",
+      "blood": "Sangue",
+      "admission_date": "Data de admissão",
+      "doctor": "Médico",
+      "department": "Departamento",
+      "gender": "Sexo",
+      "age": "Idade",
+      "height": "Altura (cm)",
+      "weight": "Peso (kg)",
+      "birth_date": "Data de nascimento",
+      "bed": "Leito",
+      "risk": "Risco",
+      "urgency": "Urgência"
+    },
+    "list": {
+      "type": {
+        "neonatal": "Neonatal",
+        "pediatrics": "Pediatria",
+        "adult": "Adulto"
+      },
+      "risk": {
+        "low": "Baixo",
+        "medium": "Médio",
+        "high": "Alto"
+      },
+      "urgency": {
+        "low": "Baixo",
+        "medium": "Médio",
+        "high": "Alto"
+      }
+    }
+  },
+  "users": {
+    "title": "Usuários",
+    "forms": {
+      "name": "Nome",
+      "level": "Nível",
+      "department": "Departamento"
+    },
+    "placeholders_table": {
+      "name": "Nome",
+      "level": "Nível",
+      "department": "Departamento",
+      "function": "Cargo",
+      "phone_extension": "Teleofne/Ramal",
+      "email": "E-mail"
+    }
+  },
+  "new_user": {
+    "title_1": "Novo Usuário",
+    "title_2": "Editar Dados: ",
+    "forms": {
+      "name": "Nome",
+      "access_level": "Nível de Acesso",
+      "department": "Departamento",
+      "phone": "Telefone",
+      "extension": "Ramal",
+      "email": "E-mail"
+    },
+    "placeholder_forms": {
+      "name": "Nome",
+      "access_level": "Nível de Acesso",
+      "department": "Departamento",
+      "phone": "Telefone",
+      "extension": "Ramal",
+      "email": "email@exemplo.com"
+    },
+    "checkbox": {
+      "general_box": "Acesso Geral",
+      "clinical_box": "Acesso clínico",
+      "management_box": "Gestão",
+      "patients_box": "Pacientes",
+      "settings_box": "Configurações",
+      "general": {
+        "dashboard": "Dashboard",
+        "beds": "Leitos",
+        "alarms": "Alarmes"
+      },
+      "management": {
+        "equipments": "Equipamentos",
+        "users": "Usuários"
+      },
+      "clinical": {
+        "patient": "Pacientes",
+        "historic": "Histórico"
+      },
+      "patients": {
+        "patient_exibition": "Exibição de Paciente",
+        "patient_edit": "Edição de Paciente"
+      },
+      "settings": {
+        "bed_settings": "Configuração de Leito",
+        "equipment_settings": "Configuração de Equipamento"
+      },
+      "alert_msg": "Por favor, insira um e-mail válido."
+    }
+  },
+  "settings": {
+    "title": "Configurações",
+    "subtitle_1": "Definições de Usuário",
+    "subtitle_2": "Definições de Sistema",
+    "forms": {
+      "language": "Definir Idioma",
+      "date_format": "Definir Formato de Data",
+      "hour_format": "Definir Formato de Hora",
+      "monitors_displayed": "Nº de monitores exibidos",
+      "volume": "Volume",
+      "data_storage": "Tamanho dos Dados",
+      "hour": "Hora do Sistema",
+      "date": "Data do Sistema",
+      "hospital": "Hospital"
+    },
+    "placeholder_forms": {
+      "language": "Idioma",
+      "date_format": "Formato de Data",
+      "hour_format": "Formato de Hora",
+      "monitors_displayed": "Nº de monitores exibidos",
+      "volume": "Volume",
+      "data_storage": "Tamanho dos Dados",
+      "hour": "Hora do Sistema",
+      "date": "Data do Sistema",
+      "hospital": "Hospital"
+    },
+    "btn_save": "Save"
+  },
+  "patient_display": {
+    "title": "Exibição do Paciente",
+    "subtitle": "Paciente",
+    "forms": {
+      "id": "Registro",
+      "patient": "Paciente",
+      "name": "Nome",
+      "type": "Tipo",
+      "blood": "Sangue",
+      "admission_date": "Data de Admissão",
+      "doctor": "Doctor",
+      "department": "Departamento",
+      "gender": "Sexo",
+      "age": "Idade",
+      "height": "Altura (cm)",
+      "weight": "Peso (kg)",
+      "birth_date": "Data de nascimento",
+      "bed": "Leito",
+      "alarms": "Alarms",
+      "priority": "Prioridade",
+      "occurrence_date": "Data de Ocorrência"
+    },
+    "placeholders_forms": {
+      "id": "Registro",
+      "name": "Nome",
+      "type": "Tipo",
+      "blood": "Sangue",
+      "admission_date": "Data de Admissão",
+      "doctor": "Médico",
+      "department": "Departamento",
+      "gender": "Sexo",
+      "age": "Idade",
+      "height": "Altura (cm)",
+      "weight": "Peso (kg)",
+      "birth_date": "Data de nascimento",
+      "bed": "Leito",
+      "alarm": "Alarme",
+      "priority": "Prioridade",
+      "occurrence_date": "Data de Ocorrência"
+    },
+    "placeholders_table": {
+      "department": "Departamento",
+      "bed": "Leito",
+      "patient": "Paciente",
+      "alarm": "Alarme ",
+      "priority": "Prioridade",
+      "occurrence_date": "Data de Ocorrência",
+      "end_occurrence": "Fim da Ocorrência",
+      "type": "Tipo"
+    },
+    "alarm_msg": "Nenhum alarme encontrado.",
+    "montioring_patient": "Paciente não admitido.",
+    "alarm": "Alarme ",
+    "historic": "Histórico não encontrado."
+  },
+  "trends": {
+    "title": "Tendências",
+    "table": "Tabela",
+    "graphic": "Gráfico"
+  }
+}

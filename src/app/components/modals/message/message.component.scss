@@ -1,0 +1,79 @@
+.mat-dialog-container {
+  background-color: var(--primary_color) !important;
+  // box-shadow: none;
+  border-radius: 10px;
+  box-shadow: 2px 2px 8px rgb(0 0 0 / 50%);
+}
+
+.cdk-overlay-dark-backdrop {
+  -webkit-backdrop-filter: blur(5px) !important;
+  backdrop-filter: blur(5px) !important;
+}
+
+.popup {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: open_popup 0.2s;
+
+  @keyframes open_popup {
+    0% {
+      opacity: 0;
+      transform: scale(0.2);
+    }
+  }
+
+  .icon_close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: var(--second_text) !important;
+    transition: all 0.2s;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.2);
+      transition: all 0.2s;
+    }
+  }
+
+  header {
+    h3,
+    h1 {
+      color: var(--second_text) !important;
+    }
+  }
+
+  p {
+    font-size: 16px;
+    color: var(--second_text) !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  li {
+    color: var(--primary_text) !important;
+  }
+
+  .card_buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 10px;
+
+    .primary {
+      flex: 1;
+      background-color: var(--primary-bg);
+      color: var(--text-color) !important;
+    }
+    .cancel {
+      flex: 1;
+      background-color: var(--button-dialog);
+      color: var(--text-color) !important;
+    }
+  }
+}

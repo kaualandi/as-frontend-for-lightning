@@ -1,0 +1,9 @@
+export class NgxColorsColor {
+    constructor(params) {
+        if (params) {
+            this.preview = params.preview;
+            this.variants = params.variants;
+        }
+    }
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29sb3IuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi9wcm9qZWN0cy9uZ3gtY29sb3JzL3NyYy9saWIvY2xhc2VzL2NvbG9yLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE1BQU0sT0FBTyxjQUFjO0lBR3pCLFlBQVksTUFBTztRQUNqQixJQUFJLE1BQU0sRUFBRTtZQUNWLElBQUksQ0FBQyxPQUFPLEdBQUcsTUFBTSxDQUFDLE9BQU8sQ0FBQztZQUM5QixJQUFJLENBQUMsUUFBUSxHQUFHLE1BQU0sQ0FBQyxRQUFRLENBQUM7U0FDakM7SUFDSCxDQUFDO0NBQ0YiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgY2xhc3MgTmd4Q29sb3JzQ29sb3Ige1xuICBwcmV2aWV3OiBzdHJpbmc7XG4gIHZhcmlhbnRzOiBBcnJheTxzdHJpbmc+O1xuICBjb25zdHJ1Y3RvcihwYXJhbXM/KSB7XG4gICAgaWYgKHBhcmFtcykge1xuICAgICAgdGhpcy5wcmV2aWV3ID0gcGFyYW1zLnByZXZpZXc7XG4gICAgICB0aGlzLnZhcmlhbnRzID0gcGFyYW1zLnZhcmlhbnRzO1xuICAgIH1cbiAgfVxufVxuIl19

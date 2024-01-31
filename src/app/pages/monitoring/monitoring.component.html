@@ -1,0 +1,254 @@
+<main id="monitoring" [ngClass]="{ 'collapsed-menu': !is_list_visible_beds }">
+  <aside class="listing-and-filter desktop" [ngClass]="{hidden}">
+    <div class="roow-buttons">
+      <button
+        mat-icon-button
+        title="expand or compress"
+        (click)="handleToggleNavbar()"
+      >
+        <i *ngIf="is_visible_navbar" icon="expand"></i>
+        <i *ngIf="!is_visible_navbar" icon="compress"></i>
+      </button>
+
+      <button title="back" mat-icon-button (click)="back()">
+        <i icon="angle_left"></i>
+      </button>
+
+      <button
+        mat-icon-button
+        class="arrows_expand"
+        (click)="next()"
+        title="angle_right"
+      >
+        <i icon="angle_right"></i>
+      </button>
+    </div>
+
+    <form [formGroup]="search_form">
+      <button
+        title="menu"
+        mat-icon-button
+        (click)="is_list_visible_beds = !is_list_visible_beds"
+      >
+        <i icon="menu"></i>
+      </button>
+
+      <div class="card-input icon" (click)="is_list_visible_beds = true">
+        <i icon="search"></i>
+        <input
+          title="search"
+          formControlName="search_name"
+          class="search-input f-14"
+          type="text"
+        />
+      </div>
+
+      <div class="card-select status-input">
+        <mat-form-field appearance="fill">
+          <mat-select formControlName="search_status" placeholder="Status">
+            <mat-option value="" *ngIf="search_form.value?.search_status" z>
+              {{ "equipment.all" | translate }}
+            </mat-option>
+
+            <mat-option *ngFor="let obj of status" [value]="obj">
+              {{ obj }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </form>
+
+    <div
+      class="list-patients"
+      [ngClass]="{
+        close_navbar: !is_visible_navbar,
+        close_beds: !is_list_visible_beds
+      }"
+      *ngIf="!loading"
+      cdkDropList
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="coll" *ngFor="let bed_obj of beds; let idx = index" cdkDrag>
+        <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+        <div
+          class="patient"
+          matTooltip="{{
+            !is_list_visible_beds ? bed_obj?.name || 'Anônimo' : ''
+          }}"
+          routerLink="/monitoring/detail/{{ bed_obj.name }}"
+          matTooltipPosition="after"
+          [ngClass]="{ alarm: bed_obj?.status === 'ALARMANDO' }"
+        >
+          <div class="name-patient-status">
+            <h4 *ngIf="is_list_visible_beds" class="f-14 break-line">
+              <span [ngClass]="bed_obj.status"></span>
+
+              {{ (bed_obj.name || "").toString().padStart(2, "0") }}
+              <!-- {{ bed_obj?.name || "Anônimo" }} -->
+              <!-- &bull; #{{
+              patient.id.toString().padStart(2, "0")
+            }} -->
+            </h4>
+
+            <!-- <span [ngClass]="bed_obj.status"></span> -->
+          </div>
+          <!-- <h5 *ngIf="is_list_visible_beds" class="f-14">
+          {{ patient?.bed?.name || "-" }}
+        </h5> -->
+          <h5 *ngIf="!is_list_visible_beds" class="f-14">
+            <!-- <span [ngClass]="bed_obj.status">#</span> -->
+            <span [ngClass]="bed_obj.status"></span>
+
+            {{ (bed_obj.name || "").toString().padStart(2, "0") }}
+          </h5>
+        </div>
+
+        <div
+          class="line"
+          *ngIf="(idx + 1) % isSetting.monitor_exibition === 0 && idx !== 0"
+        >
+          <!-- {{ beds.length % isSetting.monitor_exibition }} -->
+        </div>
+      </div>
+    </div>
+
+    <div class="list-patients skeleton" *ngIf="loading">
+      <div
+        class="patient s"
+        *ngFor="let patient of [].constructor(6)"
+        matTooltipPosition="after"
+      ></div>
+    </div>
+  </aside>
+
+  <!-- <div class="skeleton screen" *ngIf="loading && url === '/monitoring'">
+    <div class="s" *ngFor="let bed of [].constructor(9)"></div>
+  </div> -->
+
+  <aside class="listing-and-filter mobile" [ngClass]="{hidden}">
+    <form [formGroup]="search_form" class="form-mobile">
+      <div class="roow-buttons">
+        <button
+          mat-icon-button
+          title="expand or compress"
+          (click)="handleToggleNavbar()"
+        >
+          <i *ngIf="is_visible_navbar" icon="expand"></i>
+          <i *ngIf="!is_visible_navbar" icon="compress"></i>
+        </button>
+
+        <button mat-icon-button (click)="back()" title="angle_left">
+          <i icon="angle_left"></i>
+        </button>
+
+        <button
+          mat-icon-button
+          class="arrows_expand"
+          (click)="next()"
+          title="angle_right"
+        >
+          <i icon="angle_right"></i>
+        </button>
+      </div>
+
+      <div class="container-input">
+        <div class="card-input mobile-input">
+          <input
+            title="search"
+            placeholder="Pesquisar por Leito"
+            formControlName="search_name"
+            class="search-input f-14 mobile-input"
+            type="text"
+          />
+        </div>
+
+        <div class="card-select mobile-select">
+          <mat-form-field appearance="fill">
+            <mat-select formControlName="search_status" placeholder="Status">
+              <mat-option value="" *ngIf="search_form.value?.search_status" z>
+                {{ "equipment.all" | translate }}
+              </mat-option>
+
+              <mat-option *ngFor="let obj of status" [value]="obj">
+                {{ obj }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+
+    <div
+      class="list-patients"
+      [ngClass]="{
+        close_navbar: !is_visible_navbar,
+        close_beds: !is_list_visible_beds
+      }"
+      *ngIf="!loading"
+    >
+      <div
+        class="patient"
+        *ngFor="let bed_obj of beds"
+        matTooltip="{{
+          !is_list_visible_beds ? bed_obj?.name || 'Anônimo' : ''
+        }}"
+        routerLink="/monitoring/detail/{{ bed_obj.id }}"
+        matTooltipPosition="after"
+        [ngClass]="{ alarm: bed_obj?.status === 'ALARMANDO' }"
+      >
+        <div class="name-patient-status">
+          <h4 *ngIf="is_list_visible_beds" class="f-14 break-line">
+            <span [ngClass]="bed_obj.status"></span>
+
+            {{ (bed_obj.id || "").toString().padStart(2, "0") }}
+            <!-- {{ bed_obj?.name || "Anônimo" }} -->
+            <!-- &bull; #{{
+              patient.id.toString().padStart(2, "0")
+            }} -->
+          </h4>
+
+          <!-- <span [ngClass]="bed_obj.status"></span> -->
+        </div>
+        <!-- <h5 *ngIf="is_list_visible_beds" class="f-14">
+          {{ patient?.bed?.name || "-" }}
+        </h5> -->
+        <h5 *ngIf="!is_list_visible_beds" class="f-14">
+          <span [ngClass]="bed_obj.status"></span>
+
+          {{ (bed_obj.id || "").toString().padStart(2, "0") }}
+        </h5>
+      </div>
+    </div>
+
+    <div class="list-patients skeleton" *ngIf="loading">
+      <div
+        class="patient s"
+        *ngFor="let patient of [].constructor(6)"
+        matTooltipPosition="after"
+      ></div>
+    </div>
+  </aside>
+
+  <div
+    class="skeleton screen"
+    style="padding-top: 35px"
+    *ngIf="loading && url.includes('detail') && !url.includes('config')"
+  >
+    <div class="s title"></div>
+    <div class="s info"></div>
+    <div class="s monitor"></div>
+  </div>
+
+  <div
+    class="skeleton"
+    style="padding-top: 35px"
+    *ngIf="loading && url.includes('config')"
+  >
+    <div class="s title"></div>
+    <div class="s monitor"></div>
+  </div>
+
+  <section *ngIf="!loading">
+    <router-outlet style="width: 100%"></router-outlet>
+  </section>
+</main>

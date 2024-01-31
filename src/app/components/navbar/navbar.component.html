@@ -1,0 +1,56 @@
+<nav [ngClass]="{hidden}">
+  <div class="content">
+    <a class="logo" routerLink="/">
+      <img src="assets/images/as-logo.png" alt="logo" />
+    </a>
+
+    <div class="clock">
+      <p class="name f-15" *ngIf="config?.system_settings?.hospital">
+        {{ config.system_settings.hospital }}
+      </p>
+      <p>{{ now | async | fDate : "datetime" }}</p>
+
+      <div class="avatar">
+        <avatar
+          [name]="user.name"
+          color="dark"
+          bg="#fff"
+          *ngIf="user.name"
+        ></avatar>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<mat-drawer-container>
+  <mat-drawer #drawer [opened]="!hidden" mode="side">
+    <div class="nav-list">
+      <button
+        *ngIf="checkAccess('monitoring')"
+        title="home"
+        mat-icon-button
+        matTooltip="Monitores"
+        matTooltipPosition="after"
+        routerLink="/monitoring"
+        routerLinkActive="active"
+      >
+        <i icon="home"></i>
+      </button>
+
+      <button
+        title="exit"
+        class="exit-icon"
+        mat-icon-button
+        matTooltip="Sair"
+        matTooltipPosition="after"
+        (click)="logout()"
+      >
+        <i icon="exit"></i>
+      </button>
+    </div>
+  </mat-drawer>
+
+  <mat-drawer-content [ngClass]="{hidden}">
+    <router-outlet *ngIf="!loading"></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

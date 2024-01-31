@@ -1,0 +1,203 @@
+<main id="display" *ngIf="!loading && monitorings.length > 0">
+  <h1 class="f-20">{{ "monitoring.bed_view.bed_view" | translate }}</h1>
+  <div class="monitorings" *ngFor="let obj of monitorings">
+    <div class="equipments" *ngFor="let equipment of obj.equipment">
+      <header>
+        <div class="card-infos">
+          <div class="text" *ngIf="obj.patient">
+            <h3
+              class="f-14"
+              style="cursor: pointer"
+              routerLink="/patient-display/{{ obj.patient.id }}"
+            >
+              {{ obj.patient.name || "-" }}
+            </h3>
+            <h5 class="f-14" *ngIf="obj.patient.doctor_name">
+              {{ obj.patient.doctor_name || "-" }}
+            </h5>
+          </div>
+
+          <div class="text">
+            <h3 class="f-14">
+              {{ "monitoring.bed_view.admission_date" | translate }}
+            </h3>
+            <h5 class="f-14">
+              {{ obj?.patient?.admission_date | fDate : "date" }}
+            </h5>
+          </div>
+
+          <div class="text">
+            <h3 class="f-14">
+              {{ "monitoring.bed_configuration.ip" | translate }}
+            </h3>
+            <h5 class="f-14">
+              {{ equipment?.ip || "" | mask: 'IP'  }}
+            </h5>
+          </div>
+
+          <div class="text">
+            <h3 class="f-14">
+              {{ "monitoring.bed_configuration.mac" | translate }}
+            </h3>
+            <h5 class="f-14">
+              {{ equipment?.mac_address || ""  }}
+            </h5>
+          </div>
+
+          <div class="text">
+            <h3 class="f-14">
+              <h3 class="f-14">
+                {{ "monitoring.bed_configuration.department" | translate }}
+              </h3>
+            </h3>
+            <h5 class="f-14">
+              {{ equipment?.department }}
+            </h5>
+          </div>
+
+          <div class="text">
+            <h3 class="f-14">
+              {{ "monitoring.bed_configuration.bed" | translate }}
+            </h3>
+            <h5 class="f-14">
+              {{ obj.name }}
+            </h5>
+          </div>
+
+          <div class="text">
+            <h3 class="f-14">Marca - Modelo</h3>
+            <h5 class="f-14">{{ equipment.brand }} - {{ equipment.model }}</h5>
+          </div>
+
+          <span>
+            <a
+              class="trends"
+              title="icon trends"
+              mat-icon-button
+              matTooltip="Tendências com o equipamento 2"
+              routerLink="/trends/{{ equipment.id }}"
+              *ngIf="trends_access.includes('read')"
+            >
+              <i icon="trends"></i>
+            </a>
+
+            <button
+              class="config"
+              title="icon config"
+              mat-icon-button
+              matTooltip="Configuração"
+              (click)="redirectToConfig()"
+              *ngIf="level_access.update"
+            >
+              <i icon="settings"></i>
+            </button>
+          </span>
+        </div>
+      </header>
+
+      <section>
+        <div class="card-tablet">
+          <header>
+            <h1 class="f-14">
+              {{ equipment.department }} &bull; #{{
+                (equipment.id || "").toString().padStart(2, "0")
+              }}
+              <span [ngClass]="equipment?.status"> </span>
+            </h1>
+          </header>
+
+          <div class="grid">
+            <!-- <div
+              class="equipment"
+              *ngIf="curvesEDAN.length > 0 && equipment.model !== 'MP40'"
+            >
+              <div class="curves" *ngFor="let curve of curvesEDAN">
+                <curves-card
+                  class="curves-card"
+                  *ngIf="curvesEDAN && curvesEDAN.length > 0"
+                  [data]="curve.array"
+                  [name]="curve.name"
+                  [colorDot]="'#fff'"
+                  [colorLine]="curve.colorLine"
+                  [hertz]="curve.hertz"
+                  [secs]="curve.secs"
+                  [max]="curve.max"
+                  [min]="curve.min"
+                ></curves-card>
+                <curves-card
+                  class="curves-card"
+                  *ngIf="curvesEDAN && curvesEDAN.length > 0"
+                  [data]="curve.array"
+                  [name]="curve.name"
+                  [colorDot]="'#fff'"
+                  [colorLine]="curve.colorLine"
+                  [hertz]="curve.hertz"
+                  [secs]="curve.secs"
+                  [max]="curve.max"
+                  [min]="curve.min"
+                ></curves-card>
+              </div>
+            </div> -->
+
+            <!-- <div
+              class="equipment"
+              *ngIf="curvesMP40.length > 0 && equipment.model === 'MP40'"
+            >
+              <div class="curves" *ngFor="let curve of curvesMP40">
+                <curves-card
+                  class="curves-card"
+                  *ngIf="curvesMP40 && curvesMP40.length > 0"
+                  [data]="curve.array"
+                  [name]="curve.name"
+                  [colorDot]="'#fff'"
+                  [colorLine]="curve.colorLine"
+                  [hertz]="curve.hertz"
+                  [secs]="curve.secs"
+                  [max]="curve.max"
+                  [min]="curve.min"
+                ></curves-card>
+              </div>
+            </div> -->
+
+            <div
+              class="equipment"
+              *ngIf="refreshCurves && curvesMP40.length > 0"
+              #sizeCurves
+            >
+              <div class="curves" *ngFor="let curve of curvesMP40">
+                <curves-card
+                  class="curves-card"
+                  *ngIf="curvesMP40 && curvesMP40.length > 0"
+                  [data]="curve.array"
+                  [name]="curve.name"
+                  [colorDot]="'#fff'"
+                  [colorLine]="curve.colorLine"
+                  [hertz]="curve.hertz"
+                  [secs]="setSecsCurves(curve.secs)"
+                  [max]="curve.max"
+                  [min]="curve.min"
+                ></curves-card>
+              </div>
+            </div>
+
+            <app-list-channels
+              *ngIf="refresh && obj.params.length > 0"
+              class="monitor-information"
+              [channels]="obj.params"
+              [limit]="0"
+              [isAll]="true"
+            ></app-list-channels>
+
+            <h1  *ngIf="refresh && obj.params.length <= 0"> 
+              {{ "monitoring.bed_view.no_parameters_found" | translate }}
+             </h1>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<main id="no_results" *ngIf="!loading && monitorings.length <= 0">
+  <h1>  {{ "no_information_found" | translate }} </h1>
+</main>

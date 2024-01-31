@@ -1,0 +1,37 @@
+<section class="popup">
+  <button
+    aria-label="Fechar"
+    matTooltip="Fechar"
+    mat-icon-button
+    (click)="chance('no')"
+    class="icon_close"
+  >
+    <i icon="close"></i>
+  </button>
+
+  <header>
+    <h1>{{ title }}</h1>
+  </header>
+
+  <p>{{ description }}</p>
+
+  <div class="card_buttons">
+    <button
+      mat-raised-button
+      *ngIf="confirmText"
+      class="primary"
+      (click)="chance('yes')"
+    >
+      {{ confirmText }}
+    </button>
+
+    <button
+      mat-raised-button
+      *ngIf="cancellText"
+      class="cancel"
+      (click)="chance('no')"
+    >
+      {{ cancellText }}
+    </button>
+  </div>
+</section>

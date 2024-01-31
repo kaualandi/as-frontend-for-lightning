@@ -1,0 +1,28 @@
+<section>
+  <div class="curves"> 
+    <h1 class="f-12" *ngIf="listCurves.length === 0"> Sem Dados </h1>
+    <div class="card_curve" *ngFor="let channel of listCurves; let idx = index">
+      <curves-card
+        *ngIf="channel.data.length > 0"
+        [data]="channel.data"
+        name=""
+        [colorDot]="'#fff'"
+        [colorLine]="channel.color"
+        [hertz]="hertz"
+        [secs]="setSecsCurves(secs)"
+      ></curves-card>
+    </div>
+  </div>
+  <div class="channels">
+    <!-- <div class="card-channel" *ngFor="let obj of listChannels"> -->
+      <!-- <div class="card" *ngFor="let channel of obj; let idx = index"> -->
+    <div class="card-channel" *ngFor="let channel of newChannels">
+      <div class="card" >
+        <app-card-channel
+          [param]="channel"
+          (eventAlarm)="triggerAlarm($event)"
+        ></app-card-channel>
+      </div>
+    </div>
+  </div>
+</section>

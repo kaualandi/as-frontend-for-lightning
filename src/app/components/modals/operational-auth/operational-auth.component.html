@@ -1,0 +1,57 @@
+<main id="operationalAuth">
+  <div class="content">
+    <!-- <header>
+      <img src="assets/images/as-logo.png" alt="Logo" />
+    </header> -->
+
+    <div class="form">
+      <h1 class="f-16">{{ "Confirmação de senha" | translate }}</h1>
+      <form [formGroup]="login_form">
+        <div class="card-input">
+          <input
+            type="text"
+            id="email"
+            [placeholder]="'login.placeholder_email' | translate"
+            formControlName="email"
+          />
+        </div>
+        <div class="card-input">
+          <span class="input-icon">
+            <input
+              [type]="view_pass ? 'text' : 'password'"
+              id="password"
+              [placeholder]="'login.placeholder_password' | translate"
+              formControlName="password"
+            />
+            <button
+              type="button"
+              mat-icon-button
+              aria-label="Ver senha"
+              (click)="view_pass = !view_pass"
+            >
+              <i icon="view_pass" *ngIf="!view_pass"></i>
+              <i icon="hide_pass" *ngIf="view_pass"></i>
+            </button>
+          </span>
+        </div>
+
+        <div class="card-input button">
+          <button
+            mat-button
+            type="submit"
+            class="primary"
+            [disabled]="login_form.invalid || loading"
+            (click)="loginSubmitHandler()"
+          >
+            {{ "CONFIRMAR" | translate }}
+            <loading *ngIf="loading"></loading>
+          </button>
+
+          <button type="submit" mat-button (click)="close()">
+            {{ "close" | translate }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>

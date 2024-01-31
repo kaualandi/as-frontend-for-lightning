@@ -1,0 +1,73 @@
+.mat-datepicker-content {
+  background: transparent;
+}
+
+.mat-datepicker-content-container {
+  background-color: var(--table-bg);
+  color: var(--text-color);
+  border-radius: 10px;
+  transition: var(--ts);
+
+  .mat-calendar-body {
+    .ng-star-inserted {
+    }
+    .mat-calendar-body-label {
+      color: var(--text-color);
+    }
+
+    .mat-calendar-body-selected {
+      background: var(--primary-bg);
+      font-weight: 600;
+    }
+  }
+
+  .mat-calendar-arrow {
+    color: var(--text-color);
+  }
+  .mat-calendar-next-button::after {
+    color: var(--text-color);
+  }
+
+  .mat-calendar-previous-button::after {
+    color: var(--text-color);
+  }
+
+  .mat-datepicker-toggle,
+  .mat-datepicker-content .mat-calendar-next-button,
+  .mat-datepicker-content .mat-calendar-previous-button {
+    color: var(--text-color);
+  }
+
+  .mat-calendar-table-header th {
+    color: var(--text-color);
+  }
+
+  .mat-typography button {
+    &:hover {
+      background-color: var(--table-row-hover);
+    }
+  }
+
+  .mat-calendar-body-disabled
+    > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(
+      .mat-calendar-body-comparison-identical
+    ) {
+    color: var(--text-color);
+
+    &:hover {
+      background-color: var(--table-row-hover);
+    }
+  }
+
+  .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover
+    > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(
+      .mat-calendar-body-comparison-identical
+    ) {
+    &:hover {
+      background-color: var(--table-row-hover);
+    }
+  }
+  .mat-calendar-body-cell-content.mat-focus-indicator {
+    color: var(--text-color);
+  }
+}

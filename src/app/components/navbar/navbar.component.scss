@@ -1,0 +1,104 @@
+@import "src/styles/media";
+
+/*
+  ! Navbar
+  ! Se for usar configurações de CSS simples
+  ? ex: altura, bg e color
+  ! Use as variáveis de ambiente no arquivo:
+  * src/styles/_variables.scss
+
+  ! Obrigado :) - Devs
+*/
+
+nav {
+  height: var(--navbar-height);
+  transition: var(--ts);
+  width: 100%;
+  padding: 20px;
+  background-color: var(--navbar-background);
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  &.hidden {
+    top: calc(var(--navbar-height) * -1);
+  }
+  .content {
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .logo {
+      height: 100%;
+      img {
+        height: 100%;
+      }
+    }
+
+    .clock {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      p {
+        margin: 0;
+        padding: 2px 8px;
+        background-color: var(--monitoring-channel);
+        color: var(--text-color);
+        border-radius: 5px;
+        width: fit-content;
+        &.name {
+          font-weight: 500;
+        }
+      }
+      .avatar {
+        & > * {
+          display: block;
+          width: 1.7rem;
+          height: 1.7rem;
+        }
+      }
+    }
+  }
+}
+
+.mat-drawer-container {
+  height: 100%;
+  background: var(--linear-bg);
+  .mat-drawer {
+    background-color: var(--sidebar-background);
+    padding: 30px 18px;
+    .nav-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: var(--navbar-height);
+      button {
+        color: var(--text-color-50);
+        transition: var(--ts);
+
+        &.exit-icon {
+          position: absolute;
+          bottom: 3%;
+        }
+
+        &.active {
+          color: var(--text-color);
+        }
+        i {
+          font-size: 24px;
+        }
+      }
+    }
+  }
+
+  .mat-drawer-content {
+    transition: var(--ts);
+    margin-top: var(--navbar-height);
+    height: calc(100% - 85px);
+
+    &.hidden {
+      margin-top: 0;
+      height: 100%;
+    }
+  }
+}

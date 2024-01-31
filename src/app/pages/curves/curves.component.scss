@@ -1,0 +1,21 @@
+.small {
+  width: 200px;
+  height: 70px;
+}
+
+.medium {
+  width: 400px;
+  height: 140px;
+}
+
+.large {
+  width: 800px;
+  height: 280px;
+}
+
+.small,
+.medium,
+.large {
+  margin-bottom: 50px;
+  background-color: #000;
+}

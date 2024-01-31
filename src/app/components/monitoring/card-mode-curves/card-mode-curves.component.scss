@@ -1,0 +1,84 @@
+@import "src/styles/media";
+
+::ng-deep {
+  app-card-mode-curves {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex: 1;
+  }
+}
+
+section {
+  width: 100%;
+  display: flex;
+  gap: 5px;
+  flex: 1;
+
+  .curves {
+    flex: 1;
+    border-radius: 5px;
+    background-color: var(--monitoring-channel);
+    border-radius: 5px;
+    padding: 0.5em;
+
+    h1{
+      width: 100%;
+      height: 100%;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .card_curve {
+      width: 100%;
+      height: 50px;
+      flex: 1;
+    }
+  }
+
+  .channels {
+    width: 35%;
+    // min-width: 190px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+
+    @include media("<900px") {
+      min-width: 165px;
+    }
+
+    // flex-direction: column;
+    // column-count: 3;
+    // column-gap: 20px;
+
+    .card-channel {
+      width: 100%;
+      // min-width: calc(50% - 5px);
+      // flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      .card {
+        min-width: 100%;
+        // min-width: calc(50% - 5px);
+        flex: 1;
+
+        background-color: var(--monitoring-channel);
+        border-radius: 5px;
+        padding: 0.5em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        app-card-channel {
+          flex: 1;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

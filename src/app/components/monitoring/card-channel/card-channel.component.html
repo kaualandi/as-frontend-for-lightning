@@ -1,0 +1,47 @@
+<div class="card-channel"
+  [ngClass]="setClass(param)"
+  #sizeChannel>
+
+  <div
+  class="w100"
+  [ngClass]="['size-' + widthScss]"
+  id="size-channel"
+>
+  <label class="name" [style.Color]="param.color">
+    {{ param.label || '-' }}
+  </label>
+
+  <h1
+    class="measure"
+    [style.Color]="param.color"
+    [ngClass]="{ alarm: isAlarm }"
+  >
+    <span
+      [ngClass]="param.channel"
+      [innerHTML]="param.valueNew || param.value"
+    ></span>
+    <i icon="arrow_up" *ngIf="rule === 'max'"></i>
+    <i icon="arrow_down" *ngIf="rule === 'min'"></i>
+  </h1>
+
+  <div class="min_and_max">
+    <h5
+      *ngIf="param.alarm"
+      class="max"
+      [style.color]="param.color"
+      [ngClass]="{ alarm: this.param.value > this.param.alarm.max && isAlarm }"
+    >
+      {{ param.alarm.max || 0 }}
+    </h5>
+    <h5
+      *ngIf="param.alarm"
+      class="min"
+      [style.color]="param.color"
+      [ngClass]="{ alarm: this.param.value < this.param.alarm.min && isAlarm }"
+    >
+      {{ param.alarm.min || 0 }}
+    </h5>
+  </div>
+</div>
+
+</div>

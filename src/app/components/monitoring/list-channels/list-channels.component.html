@@ -1,0 +1,31 @@
+<section [ngClass]="'w_' + isSetting.monitor_exibition" #heightCard>
+  <div 
+    class="card {{ checkQtd(param, newChannels.length, idx) }} heightCard"
+    *ngFor="let param of newChannels; let idx = index"
+    [style.minHeight]="heightCards + 'px'"
+  >
+    <div
+      class="w100"
+      *ngIf="param.channel === 'PI' || param.channel === 'PNI'; else PNI_PI"
+    >
+      <app-card-channel
+        [param]="param"
+        (eventAlarm)="triggerAlarm($event)"
+      ></app-card-channel>
+    </div>
+
+    <ng-template #PNI_PI>
+      <app-card-channel
+        class="w100"
+        [param]="param"
+        (eventAlarm)="triggerAlarm($event)"
+      ></app-card-channel>
+    </ng-template>
+  </div>
+
+  <div class="card empty" *ngIf="newChannels.length === 0">
+    <h1>
+      Nenhum parâmetro encontrado.
+    </h1>
+  </div>
+</section>

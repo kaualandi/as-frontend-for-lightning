@@ -1,0 +1,39 @@
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: max-content;
+
+  .arrow {
+    transition: all 0.5s;
+    color: var(--text-color-50);
+    cursor: pointer;
+
+    &.mat-button-ripple.mat-ripple:not(:empty) {
+      &:hover {
+        background-color: var(--primary-bg);
+        opacity: 1;
+        border-radius: 10%;
+      }
+    }
+
+    &.active {
+      opacity: 1;
+      color: var(--text-color);
+      cursor: pointer;
+    }
+    i {
+      font-size: 1rem;
+      transition: all 0.5s;
+      &:hover {
+        color: var(--primary-bg);
+      }
+    }
+  }
+  .page {
+    color: var(--text-color);
+    font-size: 0.8rem;
+    font-weight: 300;
+    flex: none;
+  }
+}

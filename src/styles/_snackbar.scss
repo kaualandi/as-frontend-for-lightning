@@ -1,0 +1,16 @@
+.mat-snack-bar-container {
+  color: var(--text-color);
+  font-size: 1.5rem !important;
+
+  &.success {
+    background-color: rgb(13, 144, 13) !important;
+  }
+
+  &.error {
+    background-color: var(--red-color);
+  }
+
+  .mat-simple-snackbar-action {
+    color: var(--text-color);
+  }
+}

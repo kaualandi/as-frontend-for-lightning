@@ -1,0 +1,21 @@
+<div class="pagination">
+  <button
+    title="angle_left"
+    mat-icon-button
+    (click)="back && handlePageChange(current - 1)"
+    class="back arrow"
+    [ngClass]="{ active: back }"
+  >
+    <i icon="angle_left"></i>
+  </button>
+  <span class="page"> {{ current }} de {{ total }} </span>
+  <button
+    title="angle_right"
+    mat-icon-button
+    (click)="next && handlePageChange(current + 1)"
+    class="next arrow"
+    [ngClass]="{ active: next }"
+  >
+    <i icon="angle_right"></i>
+  </button>
+</div>

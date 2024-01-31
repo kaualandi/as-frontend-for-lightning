@@ -1,0 +1,100 @@
+@import "src/styles/_media.scss";
+
+$min-font-size: 0;
+$max-font-size: 4000;
+
+@for $i from $min-font-size through $max-font-size {
+  $class-name: ".size-#{$i}";
+  // @debug $i;
+
+  @if $i < 100 {
+    #{$class-name} {
+      --label: 0.4rem;
+      --valueBig: 0.7rem;
+      --arrow: 0.5rem;
+      --min_max: 0.3rem;
+    }
+  } @else if $i <= 150 {
+    #{$class-name} {
+      --label: 0.5rem;
+      --measure: 1.4rem;
+      --valueBig: 1.4rem;
+      --min_measure: 0.8rem;
+      --arrow: 1rem;
+      --min_max: 0.4rem;
+    }
+  } @else if $i > 900 {
+    #{$class-name} {
+      --label: 1rem;
+      --measure: 4rem;
+      --valueBig: 4rem;
+      --min_measure: 0.9rem;
+      --arrow: 3.6rem;
+      --min_max: 0.8rem;
+    }
+  } @else if $i > 450 {
+    #{$class-name} {
+      --label: 0.8rem;
+      --measure: 3rem;
+      --valueBig: 3rem;
+      --min_measure: 0.8rem;
+      --arrow: 2.6rem;
+      --min_max: 0.7rem;
+    }
+  } @else if $i > 350 {
+    #{$class-name} {
+      --label: 0.7rem;
+      --measure: 2.5rem;
+      --valueBig: 2.5rem;
+      --min_measure: 0.8rem;
+      --arrow: 2.1rem;
+      --min_max: 0.6rem;
+    }
+  } @else if $i > 150 {
+    #{$class-name} {
+      --label: 0.6rem;
+      --measure: 1.8rem;
+      --valueBig: 1.8rem;
+      --min_measure: 0.8rem;
+      --arrow: 1.6rem;
+      --min_max: 0.5rem;
+    }
+  }
+}
+
+#size-channel {
+  label.name {
+    font-size: var(--label);
+  }
+
+  h1.measure {
+    span {
+      font-size: var(--measure);
+
+      &.PI,
+      &.PNI {
+        font-size: var(--valueBig) !important;
+      }
+
+      ::ng-deep.grid-st {
+        .card-value {
+          h4.title-st {
+            font-size: calc(var(--min_measure) - 0.2rem) !important;
+          }
+          h4.value-st {
+            font-size: var(--min_measure) !important;
+          }
+        }
+      }
+    }
+    i {
+      font-size: var(--arrow);
+    }
+  }
+
+  .min_and_max {
+    h5 {
+      font-size: var(--min_max);
+    }
+  }
+}

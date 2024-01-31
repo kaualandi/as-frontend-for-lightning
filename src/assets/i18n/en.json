@@ -1,0 +1,395 @@
+{
+  "none_found": "None found.",
+  "no_information_found": "No information found.",
+  "close": "Close",
+  "save": "Save",
+  "edit": "To Edit",
+  "delet": "Delete",
+  "add": "Add",
+  "back": "Back",
+  "login": {
+    "title": "Welcome!",
+    "placeholder_email": "Email/CPF",
+    "placeholder_password": "Password",
+    "forgot_password": "Forgot password?",
+    "remember_me": "Remember me",
+    "sign_in": "Sign in"
+  },
+  "equipment": {
+    "title": "Equipments",
+    "model": "Model",
+    "brand": "Brand",
+    "type": "Type",
+    "department": "Department",
+    "bed": "Bed",
+    "connection": "Connection",
+    "select_department_first": "Select a department first",
+    "no_beds": "No beds",
+    "detail": {
+      "titleNew": "New Equipment",
+      "titleEdit": "Edit Equipment",
+      "protocol": "Protocol",
+      "department": "Department",
+      "is_active": "Is Active",
+      "verify": "Verify Equipment",
+      "keep_updated": "Keep up to date",
+      "keep_patient_updated": "Keep patient up to date"
+    }
+  },
+  "pipes": {
+    "priorityAlarms": {
+      "LOW": "Low",
+      "MEDIUM": "Medium",
+      "HIGHT": "Hight"
+    },
+    "typeAlarms": {
+      "PARAMETER": "Parameter"
+    }
+  },
+  "monitoring": {
+    "bed_view": {
+      "bed_view": "Bed View",
+      "admission_date": "Admission date",
+      "no_parameters_found": "No parameters found."
+    },
+    "bed_configuration": {
+      "bed_configuration": "Bed Configuration",
+      "equipment": "Equipment",
+      "model": "Model",
+      "brand": "Brand",
+      "type": "Type",
+      "department": "Department",
+      "bed": "Bed",
+      "connection": "Connection",
+      "ip": "IP",
+      "mac": "Mac",
+      "exhibition": "Exhibition",
+      "show": "Show",
+      "configure": "Configure",
+      "dialog": {
+        "type_of_electrocardiogram": "Type of Electrocardiogram (Mocked)"
+      }
+    },
+    "list_monitoring": {
+      "card_monitor": {
+        "anonymous": "Anonymous",
+        "offline": "OFFLINE",
+        "disconnected": "DISCONNECTED"
+      }
+    }
+  },
+  "bed": {
+    "title": "Beds",
+    "placeholders_table": {
+      "department": "Department",
+      "bed": "Bed",
+      "patient": "Patient",
+      "state": "State",
+      "alarm": "Alarm"
+    },
+    "detail": {
+      "titleNew": "New Bed",
+      "titleEdit": "Edit bed",
+      "addBed": "Add Bed",
+      "button": "Add"
+    },
+    "bed_department_config": {
+      "title": "Bed configuration"
+    },
+    "expansion_panel": {
+      "buttons": {
+        "next": "Next",
+        "previous": "Previous",
+        "end": "End"
+      },
+      "expansion_header": {
+        "infirmary": "Infirmary",
+        "birth_room": "Birth-Room",
+        "nursery": "Nursery",
+        "emergency_room": "Emergency-Room",
+        "radiology": "radiology",
+        "pediatrics": "Pediatrics"
+      }
+    }
+  },
+  "department": {
+    "detail": {
+      "titleNew": "Add Department",
+      "titleEdit": "Edit department",
+      "button": "Add"
+    }
+  },
+  "alarm": {
+    "title": "Beds",
+    "placeholders_table": {
+      "department": "Department",
+      "bed": "Bed",
+      "patient": "Patient",
+      "alarm": "Alarm",
+      "priority": "Priority",
+      "param": "Parameter",
+      "type": "Type",
+      "occurrence_date": "Occurrence Date"
+    },
+    "alarm_config": {
+      "title": "Alarm configuration"
+    }
+  },
+  "tooltip": {
+    "bed_display": "Go to bed display screen",
+    "patient_display": "Go to patient display screen",
+    "bed_department_configuration": "bed_department_configuration",
+    "new_patient": "New patient",
+    "new_user": "New User",
+    "monitoring_patient": "Show bed ",
+    "expand": "Expand "
+  },
+  "patients": {
+    "title": "Patients",
+    "forms": {
+      "patient": "Patient",
+    "risk":"Risk",
+    "urgency":"urgency",
+      "type": "Type",
+      "blood_type": "Blood",
+      "admission_date": "Admission date",
+      "doctor": "Doctor",
+      "department": "Department"
+    },
+    "placeholders_table": {
+      "patient": "Patient",
+      "risk":"Risk",
+      "urgency":"urgency",
+      "type": "Type",
+      "gender": "Gender",
+      "blood": "Blood Type",
+      "admission_date": "Admission date",
+      "doctor": "Doctor",
+      "department": "Department",
+      "bed": "bed"
+    },
+    "table_content": {
+      "type": {
+        "ADULT": "Adult",
+        "NEONATAL": "Neonatal",
+        "PEDIATRICS": "Pediatrics"
+      },
+      "gender": {
+        "MASCULINO": "Male",
+        "FEMININO": "Female"
+      },
+      "risk":{
+        "low": "Low",
+        "medium": "Medium",
+        "high": "Hight"  
+    },
+    "urgency":{
+      "low": "Low",
+      "medium": "Medium",
+      "high": "Hight"  
+  }
+    }
+  },
+  "new_patients": {
+    "title_1": "New Patient",
+    "title_2": "Data edit: ",
+    "forms": {
+      "id": "Registry",
+      "name": "Name",
+      "type": "Type",
+      "blood": "Blood",
+      "admission_date": "Admission date",
+      "doctor": "Doctor",
+      "department": "Department",
+      "gender": "Gender",
+      "age": "age",
+      "height": "Height (cm)",
+      "weight": "Weight (kg)",
+      "birth_date": "Birth date",
+      "bed": "Bed",
+      "risk":"Risck",
+      "urgency":"Urgency"
+    },
+    "placeholders_table": {
+      "name": "Full name",
+      "type": "Type",
+      "blood": "Blood",
+      "admission_date": "Admission date",
+      "doctor": "Doctor",
+      "department": "Department",
+      "gender": "Gender",
+      "age": "age",
+      "height": "Height (cm)",
+      "weight": "Weight (kg)",
+      "birth_date": "Birth date",
+      "bed": "Bed",
+      "risk":"Risck",
+      "urgency":"Urgency"
+    },
+    "list":{
+      "type":{
+        "neonatal": "Neonatal",
+        "pediatrics":"Pediatrics",
+        "adult":"Adult"
+      },
+      "risk":{
+        "low": "Low",
+        "medium": "Medium",
+        "high": "Hight"  
+    },
+    "urgency":{
+      "low": "Low",
+      "medium": "Medium",
+      "high": "Hight"  
+  }
+    }
+  },
+  "users": {
+    "title": "Users",
+    "forms": {
+      "name": "Name",
+      "level": "Level",
+      "department": "Department"
+    },
+    "placeholders_table": {
+      "name": "Name",
+      "level": "Level",
+      "department": "Department",
+      "function": "Function",
+      "phone_extension": "Phone / Extension",
+      "email": "E-mail"
+    }
+  },
+  "new_user": {
+    "title_1": "New User",
+    "title_2": "Data edit: ",
+    "forms": {
+      "name": "Name",
+      "access_level": "Access Level",
+      "department": "Department",
+      "phone": "Phone",
+      "extenssion": "Extenssion",
+      "email": "E-mail"
+    },
+    "placeholder_forms": {
+      "name": "Name",
+      "access_level": "Access Level",
+      "department": "Department",
+      "phone": "Phone",
+      "extension": "Extenssion",
+      "email": "email@exemplo.com"
+    },
+    "checkbox": {
+      "general_box": "General Access",
+      "clinical_box": "Clinical Access",
+      "management_box": "Management",
+      "patients_box": "Patients",
+      "settings_box": "Settings",
+      "general": {
+        "dashboard": "Dashboard",
+        "beds": "Beds",
+        "alarms": "Alarms"
+      },
+      "management": {
+        "equipments": "Equipments",
+        "users": "Users"
+      },
+      "clinical": {
+        "patient": "Patient",
+        "historic": "Historic"
+      },
+      "patients": {
+        "patient_exibition": "Patient Exibition",
+        "patient_edit": "Patient Edit"
+      },
+      "Settings": {
+        "bed_settings": "Bed Settings",
+        "equipment_settings": "Equipment Settings"
+      },
+      "alert_msg": "Please, put a valid e-mail format."
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle_1": "User Settings",
+    "subtitle_2": "System Settings",
+    "forms": {
+      "language": "Set Language",
+      "date_format": "Set Date Format",
+      "hour_format": "Set Hour Format",
+      "monitors_displayed": "Nº of Displayed Monitors",
+      "volume": "Volume",
+      "data_storage": "Data Storage Size",
+      "hour": "System Hour",
+      "date": "System Date",
+      "hospital":"Hospital"
+    },
+    "placeholder_forms": {
+      "language": "Language",
+      "date_format": "Date Format",
+      "hour_format": "Hour Format",
+      "monitors_displayed": "Nº of Displayed Monitors",
+      "volume": "Volume",
+      "data_storage": "Data Storage Size",
+      "hour": "System Hour",
+      "date": "System Date",
+      "hospital":"Hospital"
+    },
+    "btn_save": "Save"
+  },
+  "patient_display": {
+    "title": "Patient Display",
+    "subtitle": "Patient",
+    "forms": {
+      "id": "Registry",
+      "patient": "Patient",
+      "name": "Name",
+      "type": "Type",
+      "blood": "Blood",
+      "admission_date": "Admission date",
+      "doctor": "Doctor",
+      "department": "Department",
+      "gender": "Gender",
+      "age": "age",
+      "height": "Height (cm)",
+      "weight": "Weight (kg)",
+      "birth_date": "Birth date",
+      "bed": "Bed",
+      "alarms": "Alarms",
+      "priority": "Priority",
+      "occurrence_date": "Occurrence Date"
+    },
+    "placeholders_forms": {
+      "id": "Registry",
+      "name": "Name",
+      "type": "Type",
+      "blood": "Blood",
+      "admission_date": "Admission date",
+      "doctor": "Doctor",
+      "department": "Department",
+      "gender": "Gender",
+      "age": "age",
+      "height": "Height (cm)",
+      "weight": "Weight (kg)",
+      "birth_date": "Birth date",
+      "bed": "Bed",
+      "alarms": "Alarms",
+      "priority": "Priority",
+      "occurrence_date": "Occurrence Date"
+    },
+    "placeholders_table": {
+      "department": "Department",
+      "bed": "Bed",
+      "patient": "Patient",
+      "alarm": "Alarms",
+      "priority": "Priority",
+      "occurrence_date": "Occurrence Date",
+      "end_occurrence": "End Occurrence",
+      "type": "Type"
+    },
+    "alarm_msg": "Pateint has no alarms.",
+    "montioring_patient": "Non-admitted patient",
+    "alarm": "Alarm ",
+    "historic": "Historic not found."
+  }
+}

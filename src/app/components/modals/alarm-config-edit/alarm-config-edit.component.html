@@ -1,0 +1,55 @@
+<mat-dialog-content>
+  <header>
+    <h1>Edição do alarme:</h1>
+    <button mat-icon-button mat-dialog-close=""><i icon="close"></i></button>
+  </header>
+  <div class="edit-container">
+    <form (ngSubmit)="editAlarm()" [formGroup]="edit_form">
+      <div class="card-input">
+        <input
+          formControlName="name"
+          placeholder="Nome do alarme"
+          type="text"
+          [value]="alarms.name"
+        />
+      </div>
+      <div class="card-input">
+        <mat-select
+          placeholder="Nível de prioridade"
+          formControlName="priority"
+        >
+          <mat-option value="LOW">Baixo</mat-option>
+          <mat-option value="MEDIUM">Médio</mat-option>
+          <mat-option value="HIGH">Alto</mat-option>
+        </mat-select>
+      </div>
+      <div class="min card-input">
+        <span>
+          Mínimo
+          <p>{{ edit_form.value.min }}</p>
+        </span>
+        <mat-slider
+          [value]="edit_form.value.min"
+          formControlName="min"
+          aria-label="unit(s)"
+        ></mat-slider>
+      </div>
+      <div class="max card-input">
+        <span>
+          Máximo
+          <p>{{ edit_form.value.max }}</p>
+        </span>
+        <mat-slider
+          [value]="edit_form.value.max"
+          formControlName="max"
+          aria-label="unit(s)"
+        ></mat-slider>
+      </div>
+      <div class="btn-container">
+        <button type="submit" mat-button>
+          <loading *ngIf="loading"></loading>Salvar
+        </button>
+      </div>
+    </form>
+  </div>
+</mat-dialog-content>
